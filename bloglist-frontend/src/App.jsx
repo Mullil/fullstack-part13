@@ -5,6 +5,7 @@ import loginService from './services/login'
 import LoginForm from './components/LoginForm'
 import Togglable from './components/Togglable'
 import BlogForm from './components/BlogForm'
+import logoutService from './services/logout'
 
 
 const Notification = ({ notification }) => {
@@ -75,6 +76,7 @@ const App = () => {
   const handleLogout = async (event) => {
     event.preventDefault()
     window.localStorage.removeItem('loggedBlogappUser')
+    await logoutService.logout(user.token)
     setUser(null)
     setUsername('')
     setPassword('')
